@@ -111,8 +111,8 @@ def update_dataset(new_df):
 
 if __name__ == "__main__":
 	search_words = '#vaksin OR #vaksinasi -filter:retweets'
-	date_since = '2021-01-18'
-	date_until = '2021-01-19'
+	date_since = '2021-01-19'
+	date_until = '2021-01-20'
 	api = twitter_api()
 	print('DATE {}'.format(date_since))
 	tweet_list = create_cursor(api,
@@ -124,20 +124,3 @@ if __name__ == "__main__":
 	tweets_df = build_dataset(tweet_list)
 	update_dataset(tweets_df)
 	print('DONE')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
