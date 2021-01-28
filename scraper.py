@@ -28,7 +28,8 @@ def create_cursor(api, search_words, date_since, date_until, language='id', item
 						   q=search_words,
 						   lang=language,
 						   since=date_since,
-						   until=date_until).items(items_limit)
+						   until=date_until
+						   ).items(items_limit)
 	# Populate tweet_list with tweet from cursor
 	print('[INFO] retreive new tweets')
 	start_run = time.time()
@@ -101,6 +102,9 @@ def update_dataset(new_df):
 		print('drop non indonesian tweets...')
 		all_df = filter_dataframe(all_df)
 		print('final tweets: {}'.format(all_df.shape))
+		# sort by date
+		all_df['date'] = pd.to_datetime(all_df.date)
+		all_df.sort_values(by='date', inplace=True)
 		all_df.to_csv(file_path, index=False)
 	else:
 		print('[INFO] create new dataset')
@@ -111,8 +115,8 @@ def update_dataset(new_df):
 if __name__ == "__main__":
 	api = twitter_api()
 	search_words = '#vaksin OR #vaksinasi -filter:retweets'
-	date_since = '2021-01-25'
-	date_until = '2021-01-27'
+	date_since = '2021-01-27'
+	date_until = '2021-01-28'
 	print('Search {0} since {1} until {2}'.format(search_words, date_since, date_until))
 	# print('DATE {}'.format(date_since))
 	tweet_list = create_cursor(api,
