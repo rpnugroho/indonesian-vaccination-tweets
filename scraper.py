@@ -116,7 +116,7 @@ if __name__ == "__main__":
 	api = twitter_api()
 	search_words = '#vaksin OR #vaksinasi -filter:retweets'
 	date_since = '2021-01-27'
-	date_until = '2021-01-28'
+	date_until = '2021-01-29'
 	print('Search {0} since {1} until {2}'.format(search_words, date_since, date_until))
 	# print('DATE {}'.format(date_since))
 	tweet_list = create_cursor(api,
